@@ -211,7 +211,8 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" MATCHES "^(GNU|Clang|AppleClang)$")
     # Disable these flags in case somebody uses -ffast-math globally.
     list(APPEND BLEND2D_PRIVATE_CFLAGS -fno-trapping-math -fno-finite-math-only)
     # Blend2D code should never throw, so we don't need strict exception handling enforcement.
-    blend2d_detect_cflags(BLEND2D_PRIVATE_CFLAGS_REL -fno-enforce-eh-specs)
+    # GLK: Clang is not happy with this flag and for some reason detection fails to honour this.
+    # blend2d_detect_cflags(BLEND2D_PRIVATE_CFLAGS_REL -fno-enforce-eh-specs)
   endif()
 
   # Don't use memset/memcpy in places where we have our own loops (this degrades performance).
