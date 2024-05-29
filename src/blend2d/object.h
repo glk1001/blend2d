@@ -1057,7 +1057,7 @@ static BL_INLINE_NODEBUG bool objectNeedsCleanup(uint32_t infoBits) noexcept {
   return __builtin_constant_p(infoBits) ? infoBits >= uint32_t(BL_OBJECT_INFO_MDR_FLAGS) : true;
 }
 #else
-static BL_INLINE_NODEBUG constexpr bool objectNeedsCleanup(uint32_t) noexcept { return true; }
+BL_INLINE_NODEBUG constexpr bool objectNeedsCleanup(uint32_t) noexcept { return true; }
 #endif
 
 } // {BLInternal}
